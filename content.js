@@ -1,18 +1,13 @@
-//alert("func");
+var loaded = false
 
-function main(){
-    const atividades = document.querySelectorAll("div.activity-item")
-
-    for (i = 0 ; i < atividades.length; i++){
-        const has_data = atividades[i].querySelector('div > div.activity-dates')
-
-        if (has_data){
-            console.log(atividades[i]);
-        }
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.act === 'PEGAR' && loaded){
+        sendResponse({html: document.documentElement.innerHTML});
     }
-}
+
+});
 
 window.addEventListener('load', () => {
-    main();
+    loaded = true;
 });
 
