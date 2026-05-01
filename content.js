@@ -1,13 +1,8 @@
-var loaded = false
-
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.act === 'PEGAR' && loaded){
+    if (message.act === 'PEGAR'){
         sendResponse({html: document.documentElement.innerHTML});
     }
-
 });
 
-window.addEventListener('load', () => {
-    loaded = true;
-});
-
+// window.addEventListener('load', () => {
+// });
